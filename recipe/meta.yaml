@@ -1,5 +1,5 @@
 {% set name = "pomegranate" %}
-{% set version = "0.13.4" %}
+{% set version = "0.13.5" %}
 
 package:
   name: "{{ name|lower }}"
@@ -8,7 +8,7 @@ package:
 source:
   # use github archive as the sdist is missing pyx files
   url: https://github.com/jmschrei/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 24be72fe121c0bbe45d3eac8626de51f241022cb1929798a0b5a77b94144f317
+  sha256: 16ffa0b835007e33432ae08ce79a4da26c5ed32afbb38f5356b27c0e143a9aa5
 
 build:
   number: 0
