@@ -7,8 +7,9 @@ package:
 
 source:
   # use github archive as the sdist is missing pyx files
-  url: https://github.com/jmschrei/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
+  url: https://files.pythonhosted.org/packages/3b/b7/d5e1fdf988efb1d4293c681794bc48d2db3d4266aade82367d7b586fc6dd/{{ name }}-{{ version }}.tar.gz
+# url: https://github.com/jmschrei/{{ name }}/archive/v{{ version }}.tar.gz
+  sha256: 41b08b321b6248361fbd3cd950f12a01e6d48317dbafb32b5dd3223b66532618
 
 build:
   number: 0
