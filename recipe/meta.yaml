@@ -7,9 +7,10 @@ package:
 
 source:
   # use github archive as the sdist is missing pyx files
-  url: https://files.pythonhosted.org/packages/90/db/8bae00c6d7dad49dbea0fe6e854264e031cfeca602f5df7d7478339a34e1/{{ name }}-{{ version }}.tar.gz
+  url: https://files.pythonhosted.org/packages/51/66/e8d7b24462d6ba96a83e5135aeed202d72993d4d70b6c91301a0ffae365b/{{ name }}-{{ version }}.tar.gz
+  # Doesn't seem to be getting tagged correctly
 # url: https://github.com/jmschrei/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: d968c9cac6f2d76fd12822aabb862071bf3b2a9b62a2ad98a2556c21579acff3
+  sha256: 01f92faba8f4684d13449aea27583dcf8396a8485474629edde05722f14c2ade
 
 build:
   number: 0
