@@ -1,5 +1,5 @@
 {% set name = "pomegranate" %}
-{% set version = "0.14.3" %}
+{% set version = "0.14.4" %}
 
 package:
   name: "{{ name|lower }}"
@@ -10,7 +10,7 @@ source:
   url: https://files.pythonhosted.org/packages/51/66/e8d7b24462d6ba96a83e5135aeed202d72993d4d70b6c91301a0ffae365b/{{ name }}-{{ version }}.tar.gz
   # Doesn't seem to be getting tagged correctly
 # url: https://github.com/jmschrei/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 01f92faba8f4684d13449aea27583dcf8396a8485474629edde05722f14c2ade
+  sha256: 72bb4b1016e83e43989e1cf6bd139b2faa85d0ee09faeed83055731ae9991330
 
 build:
   number: 0
