@@ -1,5 +1,5 @@
 {% set name = "pomegranate" %}
-{% set version = "0.14.3" %}
+{% set version = "0.14.4" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,10 +7,10 @@ package:
 
 source:
   # use github archive as the sdist is missing pyx files
-  url: https://files.pythonhosted.org/packages/51/66/e8d7b24462d6ba96a83e5135aeed202d72993d4d70b6c91301a0ffae365b/{{ name }}-{{ version }}.tar.gz
+  url: https://files.pythonhosted.org/packages/source/p/pomegranate/{{ name }}-{{ version }}.tar.gz
   # Doesn't seem to be getting tagged correctly
 # url: https://github.com/jmschrei/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 01f92faba8f4684d13449aea27583dcf8396a8485474629edde05722f14c2ade
+  sha256: 3635016e6ec62ca28eaee201d543134415e9e1740016fcb1b2a8f921b369b105
 
 build:
   number: 0
