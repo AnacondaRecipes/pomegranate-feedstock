@@ -1,51 +1,72 @@
 {% set name = "pomegranate" %}
-{% set version = "0.14.4" %}
+{% set version = "1.1.2" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  # use github archive as the sdist is missing pyx files
-  url: https://files.pythonhosted.org/packages/source/p/pomegranate/{{ name }}-{{ version }}.tar.gz
-  # Doesn't seem to be getting tagged correctly
-# url: https://github.com/jmschrei/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 3635016e6ec62ca28eaee201d543134415e9e1740016fcb1b2a8f921b369b105
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: bffe01521e8783ef84cb60862ea60161c2130835868d8a37b7d79477b328ad8f
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
-  build:
-    - {{ compiler('cxx') }}
   host:
-    - cython
-    - numpy
+    - python
     - pip
-    - python
-    - scipy >=0.17.0
+    - setuptools
+    - wheel
   run:
-    - joblib >=0.9.0b4
-    - networkx >=2.0
-    - {{ pin_compatible("numpy") }}
     - python
-    - pyyaml
-    - scipy >=0.17.0
+    - numpy >=1.22.2
+    - scipy >=1.6.2
+    - scikit-learn >=1.0.2
+    - pytorch >=1.9.0
+    - apricot-select >=0.6.1
+    - networkx >=2.8.4
 
 test:
+  source_files:
+    - tests
   imports:
     - pomegranate
+    - pomegranate._utils
+    - pomegranate.bayes_classifier
+    - pomegranate.bayesian_network
     - pomegranate.distributions
+    - pomegranate.factor_graph
+    - pomegranate.gmm
+    - pomegranate.hmm
+    - pomegranate.kmeans
+    - pomegranate.markov_chain
+  commands:
+    - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
+    - pytest -v tests
+  requires:
+    - pip
+    - pytest
 
 about:
-  home: "http://pypi.python.org/pypi/pomegranate/"
-  license: "MIT"
-  license_family: "MIT"
-  license_file: "LICENSE"
-  summary: "Pomegranate is a graphical models library for Python, implemented in Cython for speed."
-  doc_url: "https://pomegranate.readthedocs.io"
-  dev_url: "https://github.com/jmschrei/pomegranate"
+  home: https://github.com/jmschrei/pomegranate
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A PyTorch implementation of probabilistic models.
+  description: |
+    pomegranate is a library for probabilistic modeling defined by its modular implementation and
+    treatment of all models as the probability distributions they are. The modular implementation
+    allows one to easily drop normal distributions into a mixture model to create a Gaussian mixture
+    model just as easily as dropping a gamma and a Poisson distribution into a mixture model to create
+    a heterogeneous mixture. But that's not all! Because each model is treated as a probability distribution,
+    Bayesian networks can be dropped into a mixture just as easily as a normal distribution, and hidden Markov
+    models can be dropped into Bayes classifiers to make a classifier over sequences. Together,
+    these two design choices enable a flexibility not seen in any other probabilistic modeling package.
+  doc_url: https://pomegranate.readthedocs.io
+  dev_url: https://github.com/jmschrei/pomegranate
 
 extra:
   recipe-maintainers:
